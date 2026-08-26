@@ -97,7 +97,28 @@ class LinkedList {
     this.length++;
   }
 
-  remove(){}
+  remove(index){
+
+    if(index === 0){
+      this.head = this.head.next;
+
+      if(this.length === 1){
+        this.tail = null;
+      }
+
+      return undefined;
+    }
+
+    const leadingNode = this._traverseToIndex(index - 1);
+    const nodeToRemove = leadingNode.next;
+    leadingNode.next = nodeToRemove.next;
+
+    if(leadingNode.next === null){
+      this.tail = leadingNode
+    }
+
+    
+  }
 
 
   // private helper method(underscore is used so that developer does not use it outside the class)
@@ -127,16 +148,28 @@ class LinkedList {
 
 
 const myLinkedList = new LinkedList();
-myLinkedList.append(1).append(2).append(3).append(4).append(5);
+
+// myLinkedList.append(1).append(2).append(3).append(4).append(5);
+
+// myLinkedList.append(1)
 // myLinkedList.append(2);
 // myLinkedList.append(3);
 // myLinkedList.append(4);
 // myLinkedList.append(5);
 
-myLinkedList.prepend(10); //index 2
-myLinkedList.prepend(20); //index 1
-myLinkedList.prepend(30); //index 0
+myLinkedList.append("A"); //index 0
+myLinkedList.append("B"); //index 1
+myLinkedList.append("C"); //index 2
+myLinkedList.append("D"); //index 3
 
-myLinkedList.insert(2, 1500)
+
+
+myLinkedList.remove(0)
+
+// myLinkedList.prepend(10); //index 2
+// myLinkedList.prepend(20); //index 1
+// myLinkedList.prepend(30); //index 0
+
+// myLinkedList.insert(2, 1500)
 
 myLinkedList.print();
