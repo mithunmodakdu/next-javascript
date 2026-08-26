@@ -51,6 +51,8 @@ class LinkedList {
     }
 
     this.length++;
+
+    return this;
   }
 
   prepend(value){
@@ -62,6 +64,8 @@ class LinkedList {
       newNode.next = this.head;
       this.head = newNode;
     }
+
+    this.length++;
   }
 
   insert(index, value){
@@ -81,11 +85,16 @@ class LinkedList {
     }
 
     // if the insert is in the middle of linked list
-    // 1. find the leading node (previous node of given index)
-    let leadingNode = this._traverseToIndex(index - 1);
-    console.log(leadingNode)
-    
+    // find the leading node (previous node of given index)
+    const leadingNode = this._traverseToIndex(index - 1);
+    const holdingNode = leadingNode.next;
 
+    const newNode = new Node(value);
+
+    leadingNode.next = newNode;
+    newNode.next = holdingNode;
+    
+    this.length++;
   }
 
   remove(){}
@@ -118,16 +127,16 @@ class LinkedList {
 
 
 const myLinkedList = new LinkedList();
-myLinkedList.append(1);
-myLinkedList.append(2);
-myLinkedList.append(3);
-myLinkedList.append(4);
-myLinkedList.append(5);
+myLinkedList.append(1).append(2).append(3).append(4).append(5);
+// myLinkedList.append(2);
+// myLinkedList.append(3);
+// myLinkedList.append(4);
+// myLinkedList.append(5);
 
 myLinkedList.prepend(10); //index 2
 myLinkedList.prepend(20); //index 1
 myLinkedList.prepend(30); //index 0
 
-myLinkedList.insert(2, 15)
+myLinkedList.insert(2, 1500)
 
 myLinkedList.print();
