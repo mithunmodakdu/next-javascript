@@ -64,7 +64,34 @@ class LinkedList {
     }
   }
 
-  insert(){}
+  insert(index, value){
+    if(index < 0 || index > this.length){
+      console.error("Index is out of boundary")
+      return undefined;
+    }
+
+    // if the insert is in the start of linked list
+    if(index === 0){
+      return this.prepend(value);
+    }
+
+    // if the insert is in the end of linked list
+    if(index === this.length){
+      return this.append(value);
+    }
+
+    // if the insert is in the middle of linked list
+    // 1. find the leading node (previous node of given index)
+    let count = 0;
+    let leadingNode = this.head;
+
+    while(count !== index -1){
+      leadingNode = leadingNode.next;
+      count++;
+    }
+    console.log(leadingNode)
+
+  }
 
   remove(){}
 
@@ -88,5 +115,11 @@ myLinkedList.append(2);
 myLinkedList.append(3);
 myLinkedList.append(4);
 myLinkedList.append(5);
+
+myLinkedList.prepend(10); //index 2
+myLinkedList.prepend(20); //index 1
+myLinkedList.prepend(30); //index 0
+
+myLinkedList.insert(2, 15)
 
 myLinkedList.print();
