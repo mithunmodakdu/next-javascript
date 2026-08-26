@@ -82,18 +82,26 @@ class LinkedList {
 
     // if the insert is in the middle of linked list
     // 1. find the leading node (previous node of given index)
-    let count = 0;
-    let leadingNode = this.head;
-
-    while(count !== index -1){
-      leadingNode = leadingNode.next;
-      count++;
-    }
+    let leadingNode = this._traverseToIndex(index - 1);
     console.log(leadingNode)
+    
 
   }
 
   remove(){}
+
+
+  // private helper method(underscore is used so that developer does not use it outside the class)
+  _traverseToIndex(index){
+    let count = 0;
+    let currentNode = this.head;
+
+    while(count !== index){
+      currentNode = currentNode.next;
+      count++;
+    }
+    return currentNode;
+  }
 
   print(){
     const arr = [];
