@@ -18,12 +18,19 @@
 //* Time Complexity = O(n)
 
 
+
+//* Space Complexity = O(n)
+//* Time Complexity = O(n)
 const isPalindrome = (str) => {
+
+  //* Space Complexity = O(n)
+  //* Time Complexity = O(n)
   const normalized = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  //* Space Complexity = O(n)
+  //* Time Complexity = O(n)
   const reversed = normalized.split("").reverse().join("");
 
-  // console.log(normalized)
-  // console.log(reversed)
 
   if(normalized === reversed){
     return true;
@@ -35,3 +42,33 @@ const isPalindrome = (str) => {
 // console.log(isPalindrome("A man, a plan, a canal: Panama"))
 // console.log(isPalindrome("Level"))
 // console.log(isPalindrome("ABCD"))
+
+
+
+//* Space Complexity = O(n)
+//* Time Complexity = O(n)
+const isPalindromeTwoPointer = (str) => {
+
+  //* Space Complexity = O(n)
+  //* Time Complexity = O(n)
+  const normalized = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  let left = 0;
+  let right = normalized.length - 1;
+
+  //* Time Complexity = O(m/2)
+  while(left < right){
+    if(normalized[left] !== normalized[right]){
+      return false;
+    }
+
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
+console.log(isPalindromeTwoPointer("A man, a plan, a canal: Panama"))
+console.log(isPalindromeTwoPointer("Level"))
+console.log(isPalindromeTwoPointer("ABCD"))
